@@ -18,7 +18,7 @@ def info_btc_usdc():
             pass
 
 
-    print(data, end = '\n\n')
+    #print(data, end = '\n\n')
 
     btc_usdc_title = ' ' + str(data['base_name']) + ' - ' + str(data['quote_name'] + ' ')
     btc_usdc = str(data['base']) + ' - ' + str(data['quote'])
@@ -37,9 +37,9 @@ def info_btc_usdc():
             ]
 
 
-    print(btc_usdc_title)
-    print(tabulate(info))
+    #print(btc_usdc_title)
+    #print(tabulate(info))
+    return tabulate(info)
 
 
-info_btc_usdc()
 # ------------------------------------

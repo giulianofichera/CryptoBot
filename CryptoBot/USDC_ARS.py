@@ -18,7 +18,7 @@ def info_usdc_ars():
             pass
 
 
-    print(data, end = '\n\n')
+    #print(data, end = '\n\n')
 
     usdc_ars_title = ' ' + str(data['base_name']) + ' - ' + str(data['quote_name'] + ' ')
     usdc_ars = str(data['base']) + ' - ' + str(data['quote'])
@@ -37,9 +37,9 @@ def info_usdc_ars():
             ]
 
 
-    print(usdc_ars_title)
-    print(tabulate(info))
+    #print(usdc_ars_title)
+    #print(tabulate(info))
+    return tabulate(info)
 
 
-info_usdc_ars()
 # ------------------------------------
