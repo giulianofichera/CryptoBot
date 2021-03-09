@@ -1,6 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler
 from btc_usdc import info_btc_usdc
 from usdc_ars import info_usdc_ars
+import threading
 
 menu = """--- Menu ---
 /btc
@@ -28,8 +29,6 @@ dispatcher = updater.dispatcher
 def start(update, context):
     context.bot.send_message(chat_id=chat_id, text=menu)
 
-
-
 def btc(update, context):
     context.bot.send_message(chat_id=chat_id, text="Parsing information...")
     context.bot.send_message(chat_id=chat_id, text=info_btc_usdc())
@@ -38,6 +37,12 @@ def usdc(update, context):
     context.bot.send_message(chat_id=chat_id, text="Parsing information...")
     context.bot.send_message(chat_id=chat_id, text=info_usdc_ars())
 
+def stop(update, context):
+    threading.Thread(target=shutdown).start()
+
+def shutdown():
+    updater.stop()
+    updater.is_idle = False
 
 # /start
 start_handler = CommandHandler('start', start)
@@ -48,9 +53,13 @@ dispatcher.add_handler(btc_handler)
 # /usdc
 usdc_handler = CommandHandler('usdc', usdc)
 dispatcher.add_handler(usdc_handler)
+# /stop
+stop_handler = CommandHandler('stop', stop)
+dispatcher.add_handler(stop_handler)
 
 
 updater.start_polling()
-
 updater.dispatcher.bot.sendMessage(chat_id=chat_id, text=menu)
 print('Bot Active...')
+
+exit()
