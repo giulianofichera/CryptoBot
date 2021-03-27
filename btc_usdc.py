@@ -2,7 +2,7 @@ import json
 import requests
 from tabulate import tabulate
 
-### ------------ USDC - ARS ------------
+### ------------ BTC - USDC ------------
 def info_btc_usdc():
     
     btc_usdc_url = 'https://api.exchange.ripio.com/api/v1/rate/BTC_USDC/'
